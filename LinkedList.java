@@ -81,6 +81,25 @@ class ListNode {
 
     }
 
+    void delete_at_end() {
+        if (head == null)
+            return;
+
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node temp = head;
+        Node front = null;
+        while (temp.next != null) {
+            front = temp;
+            temp = temp.next;
+        }
+        front.next = null;
+
+    }
+
 }
 
 public class LinkedList {
@@ -97,7 +116,9 @@ public class LinkedList {
 
         // node.insert_at_position(666, 4);
 
-        node.delete_at_begin();
+        // node.delete_at_begin();
+
+        node.delete_at_end();
 
         node.traversal();
     }
