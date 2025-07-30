@@ -1,0 +1,69 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class ListNode {
+    int coeff;
+    int power;
+    ListNode next;
+    ListNode(int data, int pow){
+        coeff=data;
+        power=pow;
+        this.next=null;
+    }
+}
+
+class Implementation{
+    ListNode head;
+    
+    void insert(int coeff, int pow){
+        ListNode newnode=new ListNode(coeff, pow);
+        
+        if(head==null || head.power<pow){
+            newnode.next=head;
+            head=newnode;
+            return;
+        }
+        
+        ListNode temp=head;
+        while(temp.next!=null && temp.next.power>=pow){
+            temp=temp.next;
+        }
+        newnode.next=temp.next;
+        temp.next=newnode;
+    }
+    
+    void traversal(){
+        if(head==null){
+            System.out.println(0);
+            return;
+        }
+        
+        ListNode temp=head;
+        
+        while(temp!=null){
+            if(temp.coeff!=0){
+                if(temp!=head)
+                System.out.print("+");
+                System.out.print(temp.coeff+"x^"+temp.power);
+            }
+            temp=temp.next;
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Implementation node= new Implementation();
+        
+        node.insert(3, 2);
+        
+        node.insert(1, 0);
+        node.insert(4, 3);
+        node.insert(2, 1);
+        
+        
+        node.traversal();
+        
+        
+    }
+}
