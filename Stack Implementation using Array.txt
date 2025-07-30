@@ -1,0 +1,62 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Stack{
+    int maxSize;
+    int top=-1;
+    Stack(int n){
+        maxSize=n;
+    }
+    
+    void push(int data, int[] arr){
+        if(top==maxSize-1){
+            System.out.println("Stack overflow");
+            return;
+        }
+        arr[++top]=data;
+    }
+    
+    void traversal(int[] arr){
+        for(int i=top; i>=0; i--){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    
+    void pop(){
+        if(top==-1){
+            System.out.println("Stack underflow");
+            return;
+        }
+        top--;
+    }
+    void peek(int[] arr){
+        System.out.println("\n"+arr[top]);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+       int[] arr=new int[5];
+       
+       Stack st= new Stack(5);
+       
+       st.push(10, arr);
+       st.push(20, arr);
+       st.push(30, arr);
+       st.push(40, arr);
+       
+       st.traversal(arr);
+       
+       System.out.println();
+       st.pop();
+       
+       st.traversal(arr);
+       System.out.println();
+       st.pop();
+       st.pop();
+       st.push(90, arr);
+       st.traversal(arr);
+       st.peek(arr);
+       
+    }
+}

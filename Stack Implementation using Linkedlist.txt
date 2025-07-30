@@ -1,0 +1,73 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class ListNode{
+    int data;
+    ListNode next;
+    ListNode(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+
+class Stack{
+    int maxSize=5;
+    ListNode head;
+    int top=-1;
+    
+    void push(int data){
+        if(top==maxSize-1){
+            System.out.println("Stack overflow");
+            return;
+        }
+        top++;
+        ListNode newnode= new ListNode(data);
+        if(head==null){
+            head=newnode;
+            return;
+        }
+        newnode.next=head;
+        head=newnode;
+    }
+    
+    void traversal(){
+        ListNode temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    void pop(){
+        if(top==-1){
+            System.out.println("Stack underflow");
+            return;
+        }
+        top--;
+        head=head.next;
+    }
+    
+    void peek(){
+        System.out.println(head.data);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+       
+       Stack st= new Stack();
+       
+       st.push(10);
+       st.push(20);
+       st.push(30);
+       st.push(40);
+       st.push(50);
+       st.traversal();
+       st.pop();
+       st.traversal();
+       st.push(60);
+       st.traversal();
+       st.peek();
+    }
+}
