@@ -1,0 +1,120 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class ListNode {
+    int data;
+    ListNode next;
+    ListNode(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+
+class Implementation{
+    ListNode head;
+    void traversal(){
+        if(head==null){
+            System.out.println("List is empty");
+            return;
+        }
+        
+        ListNode temp=head;
+        do{
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }while(temp!=head);
+    }
+    
+    void insert_at_begin(int data){
+        ListNode newnode= new ListNode(data);
+        if(head==null){
+            head=newnode;
+            head.next=newnode;
+            return;
+        }
+        ListNode temp= head;
+        while(temp.next!=head){
+            temp=temp.next;
+        }
+        temp.next=newnode;
+        newnode.next=head;
+        head=newnode;
+    }
+    
+    void insert_at_end(int data){
+        ListNode newnode= new ListNode(data);
+        if(head==null){
+            head=newnode;
+            head.next=newnode;
+            return;
+        }
+        ListNode temp=head;
+        while(temp.next!=head){
+            temp=temp.next;
+        }
+        temp.next=newnode;
+        newnode.next=head;
+    }
+    
+    void delete_at_begin(){
+        if(head==null){
+            return;
+        }
+        ListNode temp=head;
+        while(temp.next!=head){
+            temp=temp.next;
+        }
+        temp.next=head.next;
+       head=temp.next;
+    }
+    
+    void delete_at_end(){
+        if(head==null){
+            return;
+        }
+        
+        ListNode temp=head;
+        ListNode prev=null;
+        
+        while(temp.next!=head){
+            prev=temp;
+            temp=temp.next;
+        }
+        if(prev==null){
+            head=null;
+            return;
+        }
+        prev.next=temp.next;
+        
+    }
+    
+}
+
+class Main {
+    public static void main(String[] args) {
+        
+        Implementation node = new Implementation();
+        
+        node.insert_at_begin(111);
+        node.insert_at_begin(222);
+        node.insert_at_begin(333);
+        node.insert_at_begin(444);
+        
+        node.insert_at_end(999);
+        node.insert_at_end(888);
+        node.insert_at_end(777);
+        
+        node.delete_at_begin();
+        
+        node.delete_at_end();
+        
+        node.traversal();
+       
+    }
+}
